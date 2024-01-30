@@ -1,0 +1,70 @@
+<svg width="163pt" height="165pt" viewBox="0.00 0.00 163.37 164.59" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 160.59)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-160.59 159.37,-160.59 159.37,4 -4,4"></polygon>
+<!-- n1 -->
+<g id="box1" class="node">
+<title>n1</title>
+<ellipse fill="none" stroke="black" cx="29.62" cy="-117.66" rx="29.62" ry="18"></ellipse>
+<text text-anchor="middle" x="29.62" y="-111.49" font-family="Serif" font-size="14.00">Effector</text>
+</g>
+<!-- n6 -->
+<!-- junction -->
+<g id="junction1" class="node">
+<title>n6</title>
+<ellipse fill="black" stroke="black" cx="68.98" cy="-117.98" rx="2.7" ry="2.7"></ellipse>
+<text text-anchor="middle" x="91.03" y="-121.63" font-family="Serif" font-size="14.00">Effectors</text>
+</g>
+<!-- n1&#45;&#45;n6 -->
+<g id="edge1" class="edge">
+<title>n1--n6</title>
+<path fill="none" stroke="black" d="M59.45,-117.9C62.02,-117.92 64.28,-117.94 65.95,-117.95"></path>
+</g>
+<!-- n2 -->
+<g id="box2" class="node">
+<title>n2</title>
+<ellipse fill="none" stroke="black" cx="92.79" cy="-87.18" rx="33.51" ry="18"></ellipse>
+<text text-anchor="middle" x="92.79" y="-81" font-family="Serif" font-size="14.00">WarZone</text>
+</g>
+<!-- n2&#45;&#45;n6 -->
+<g id="edge2" class="edge">
+<title>n2--n6</title>
+<path fill="none" stroke="black" d="M79.77,-104.02C76.29,-108.51 72.95,-112.84 70.92,-115.46"></path>
+</g>
+<!-- n7 -->
+<!-- junction -->
+<g id="junction2" class="node">
+<title>n7</title>
+<ellipse fill="black" stroke="black" cx="115.68" cy="-55.69" rx="2.7" ry="2.7"></ellipse>
+<text text-anchor="middle" x="88.98" y="-53.94" font-family="Serif" font-size="14.00">Zombies</text>
+</g>
+<!-- n2&#45;&#45;n7 -->
+<g id="edge4" class="edge">
+<title>n2--n7</title>
+<path fill="none" stroke="black" d="M105.04,-70.33C108.61,-65.42 112.07,-60.65 114.04,-57.95"></path>
+</g>
+<!-- n3 -->
+<g id="box3" class="node">
+<title>n3</title>
+<ellipse fill="none" stroke="black" cx="104.36" cy="-18" rx="28.76" ry="18"></ellipse>
+<text text-anchor="middle" x="104.36" y="-11.82" font-family="Serif" font-size="14.00">Zombie</text>
+</g>
+<!-- n3&#45;&#45;n7 -->
+<g id="edge5" class="edge">
+<title>n3--n7</title>
+<path fill="none" stroke="black" d="M109.76,-35.96C111.71,-42.49 113.71,-49.15 114.82,-52.82"></path>
+</g>
+<!-- n4 -->
+<!-- n4&#45;&#45;n6 -->
+<g id="edge3" class="edge">
+<title>n4--n6</title>
+<path fill="none" stroke="black" d="M79.34,-155.21C78.21,-151.13 72.07,-129.1 69.81,-120.98"></path>
+</g>
+<!-- n5 -->
+<!-- n5&#45;&#45;n7 -->
+<g id="edge6" class="edge">
+<title>n5--n7</title>
+<path fill="none" stroke="black" d="M154.9,-55.21C152.99,-55.23 127.34,-55.55 118.59,-55.66"></path>
+</g>
+</g>
+</svg>

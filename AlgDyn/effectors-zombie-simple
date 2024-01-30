@@ -1,0 +1,81 @@
+using AlgebraicDynamics
+using Catlab.WiringDiagrams, Catlab.Programs, Catlab.Graphics
+
+using LabelledArrays
+using OrdinaryDiffEq, Plots, Plots.PlotMeasures
+
+#----------------------------------------------#
+    # Defining the Blueprint (syntax) #
+#----------------------------------------------#
+
+# Define the composition patternß
+blueprint = @relation (Effectors,Zombies) begin
+    Effector(Effectors) # box_name(junction_name)
+    WarZone(Effectors,Zombies)
+    Zombie(Zombies)
+end
+
+#Draw the undirected wiring diagram
+to_graphviz(blueprint, box_labels=:name, junction_labels=:variable)
+
+#----------------------------------------------#
+    # Defining the building blocks (semantics) #
+#----------------------------------------------#
+
+# Define the primitive systems
+dotE(u,p,t) = p.e_production - p.e_decline*u[1] 
+dotET(u,p,t) = [- p.e_killed*u[1]*u[2], -p.t_killed*u[1]*u[2]]
+dotT(u,p,t) = p.t_production * u[1] 
+
+# Put a box around each of these dyanmics
+effectors = ContinuousResourceSharer{Float64}(1, dotE)
+warzone = ContinuousResourceSharer{Float64}(2, dotET)
+zombies = ContinuousResourceSharer{Float64}(1, dotT)
+
+#--------------------------------------------------------#
+  # Superposing the building blocks on the blue print #
+#--------------------------------------------------------#
+# Compose
+defense_system = oapply(blueprint, [effectors, warzone, zombies])
+
+#-------------------------------------------------------------#
+  # Setting initial values of the system, setting parameters #
+#-------------------------------------------------------------#
+# Solve and plot
+u0 = [4*10^6, 0.5*10^6] # 10 rabbits, 100 foxes
+params = LVector(e_production=13000, 
+    e_killed=3.422*10^(-10), 
+    e_decline=0.0412, 
+    t_killed=1.101*10^(-7),
+    t_production=0.18,
+    envCapacity=2*10^9) 
+#params = LVector(α=.3, β=0.015, γ=0.015, δ=0.7)
+tspan = (0.0, 100)
+
+#u0 = [100, 1000] # 10 rabbits, 100 foxes
+#= params = LVector(e_production=13000, 
+    p1=0.1245, 
+    g1=10000,
+    m=0.00003, 
+    e_decline=0.0212, # About 2% die everyday
+    t_killing=0.0001,
+    t_production=0.18, # zombie multiplication rate
+    envCapacity=20000) =#
+
+#-------------------------------------------------------------------------------------#
+  # The computer simulates the evolution of the system starting from initial values #
+#-------------------------------------------------------------------------------------#
+#solving differential equation 
+prob = ODEProblem(defense_system, u0, tspan, params)
+sol = solve(prob, Tsit5())
+
+#---------------------------------------#
+  # Visualize the system evolution #
+#---------------------------------------#
+
+x=range(1,100,length=100)
+y = first(map(last,sol),100)
+plot(x,y, yscale=:log10, ylabel="Tumour cells", xlabel="days")
+
+z = first(map(first,sol),100)
+plot(x,z, ylabel="Effector cells", xlabel="days")

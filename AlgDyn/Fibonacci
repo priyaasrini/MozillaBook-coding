@@ -1,0 +1,49 @@
+using AlgebraicDynamics
+using Catlab.WiringDiagrams, Catlab.Programs, Catlab.Graphics
+using AlgebraicDynamics.DWDDynam
+
+using LabelledArrays
+using SciMLBase
+using OrdinaryDiffEq
+
+
+# Define the composition pattern
+fibonacci_pattern = WiringDiagram([], [:seq])
+plus_box = add_box!(fibonacci_pattern, Box(:add, [:a0,:a1], [:sum]))
+memory_box = add_box!(fibonacci_pattern, Box(:memory, [:c], [:copy]))
+
+add_wires!(fibonacci_pattern, Pair[
+    (plus_box, 1)    => (output_id(fibonacci_pattern), 1)
+    ,(plus_box, 1) => (plus_box, 1)
+    ,(memory_box, 1)   => (plus_box, 2)
+    ,(plus_box, 1) => (memory_box, 1)
+])
+
+#Draw the undirected wiring diagram
+#to_graphviz(rabbitfox_pattern, labels=true, label_attr=:xlabel)
+draw(d::WiringDiagram; labels=true) = to_graphviz(d,
+  orientation=LeftToRight,
+  labels=labels, label_attr=:xlabel
+)
+
+draw(fibonacci_pattern, labels=true)
+
+
+plus_f(curr_state, inp, p, t) = [inp[1]+inp[2]]
+readout_plus(state, p, n) = state
+plus_system = DiscreteMachine{Int}(2, 1, 1, plus_f, readout_plus) #DiscreteMachine{T}(ninputs, nstates, noutputs, f, r)
+
+
+memory_f(curr_state, inp, p, t) = inp
+readout_memory(state, p, n) = state
+memory_system = DiscreteMachine{Int}(1, 1, 1, memory_f, readout_memory) #DiscreteMachine{T}(ninputs, nstates, noutputs, f, r)
+
+fibonacci_system = oapply(fibonacci_pattern, [plus_system, memory_system]) 
+
+# Solve and plot
+u0 = [0, 1]
+tspan = (0,10)
+
+prob = DiscreteProblem(fibonacci_system, u0, tspan, nothing) #p=nothing (no parameters)
+sol = solve(prob, FunctionMap())
+print(sol)
