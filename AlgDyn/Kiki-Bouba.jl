@@ -8,11 +8,15 @@ using Catlab.WiringDiagrams, Catlab.Programs, Catlab.Graphics
 using OrdinaryDiffEq, Plots, Plots.PlotMeasures
 
 # Define the composition pattern
-mood_pattern = WiringDiagram([], [:mood_level])
-person_box = add_box!(mood_pattern, Box(:KeeKee, [], [:mood_level]))
+mood_pattern = WiringDiagram([], [:Kiki, :Bouba])
+Kiki_b = add_box!(mood_pattern, Box(:Kiki, [:Bouba_mood], [:Kiki_mood]))
+Bouba_b = add_box!(mood_pattern, Box(:Bouba, [:Kiki_mood], [:Bouba_mood]))
 
 add_wires!(mood_pattern, Pair[
-    (person_box, 1) => (output_id(mood_pattern), 1)
+    (Kiki_b, 1) => (Bouba_b, 1),
+    (Bouba_b, 1)    => (Kiki_b, 1),
+    (Kiki_b, 1) => (output_id(mood_pattern), 1),
+    (Bouba_b, 1)    => (output_id(mood_pattern), 2)
 ])
 
 #Draw the undirected wiring diagram
@@ -27,7 +31,7 @@ draw(mood_pattern, labels=true)
 
 #------------------------------#
 # Define the primitive systems #
-# A person's mood level is a number in the interval [-5, 5] 
+# Each person's mood level is a number in the interval [-5, 5] 
 # -5 is uber grumpy
 # +5 is uber excited 
 #  0 is neutral
@@ -42,23 +46,39 @@ draw(mood_pattern, labels=true)
 # must be treated as a shared resource which is either available to both or unavailable to both simultaneously. 
 #------------------------------#
 
-dotmood(mood, input, param, t) = [-(mood[1] * param.calmdown_rate[1]) ]
+dotmood_Kiki(mood, input, param, t) = # [ - mood[1] * param.calmdown_rate[1] ]
+ begin
+    if ( mood[1] <= param.grumpiness_tolerance[1] || mood[1] >= param.excitement_tolerance[1] )
+     [ - (mood[1] * param.calmdown_rate[1]) ] # pay attention to the negative sign in the front; here, change in mood is the amount by which the mood moves towards zero
+    else
+     [ input[1] * param.susceptability[1] - mood[1] * param.calmdown_rate[1] ]
+    end
+end 
+
+dotmood_Bouba(mood, input, param, t) = 
+begin
+   if ( mood[1] <= param.grumpiness_tolerance[2] || mood[1] >= param.excitement_tolerance[2] )
+      [ - mood[1] * param.calmdown_rate[2] ]
+    else
+      [ input[1] * param.susceptability[2] - mood[1] * param.calmdown_rate[2] ]
+    end
+end 
 
 # 1 input, 1 state, 1 output, dynamics, readout
-KeeKee_m = ContinuousMachine{Float64}(0,1,1, dotmood, (mood_level, p, t) -> mood_level)
+Kiki_m = ContinuousMachine{Float64}(1,1,1, dotmood_Kiki, (mood_level, p, t) -> mood_level)
+Bouba_m = ContinuousMachine{Float64}(1,1,1, dotmood_Bouba, (mood_level, p, t) -> mood_level)
 
 # Compose
-mood_system = oapply(mood_pattern, [KeeKee_m]) 
+mood_system = oapply(mood_pattern, [Kiki_m, Bouba_m]) # 
 
-initial_moods = [4.5]
-params = LVector(calmdown_rate=[.05, .03])
+initial_moods = [4.5, -2.8]
+params = LVector(susceptability=[0.2, 0.1], calmdown_rate=[.05, .03], grumpiness_tolerance=[-4,-4.8], excitement_tolerance=[4.5,4])
 tspan = (0.0, 100.0)
 
 prob = ODEProblem(mood_system, initial_moods, tspan, params)
 sol = solve(prob, Tsit5())
 
-
 plot(sol, mood_system, params,
-    lw=2, title = "Mood in Zen Mode!",
+    lw=2, title = "Talking Friends - Happy Friends",
     xlabel = "Time in Minutes", ylabel = "Mood level"
 )
