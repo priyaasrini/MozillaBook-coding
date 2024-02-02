@@ -22,44 +22,40 @@ function electrode(
     circle(p, radius, :stroke)
 end
 
-electrodes_list = [
-    (name = "Cz", position = O),
-    (name = "C3", position = Point(-70, 0)),
-    (name = "C4", position = Point(70, 0)),
-    (name = "T3", position = Point(-140, 0)),
-    (name = "T4", position = Point(140, 0)),
-    (name = "Pz", position = Point(0, 70)),
-    (name = "P3", position = Point(-50, 70)),
-    (name = "P4", position = Point(50, 70)),
-    (name = "Fz", position = Point(0, -70)),
-    (name = "F3", position = Point(-50, -70)),
-    (name = "F4", position = Point(50, -70)),
-    (name = "F8", position = Point(115, -80)),
-    (name = "F7", position = Point(-115, -80)),
-    (name = "T6", position = Point(115, 80)),
-    (name = "T5", position = Point(-115, 80)),
-    (name = "Fp2", position = Point(40, -135)),
-    (name = "Fp1", position = Point(-40, -135)),
-    (name = "A1", position = Point(-190, -10)),
-    (name = "A2", position = Point(190, -10)),
-    (name = "O1", position = Point(-40, 135)),
-    (name = "O2", position = Point(40, 135)),
-]
+frame=10
 
-indicators = ["white", "gold1"]
-sequence = ["White", "gold1", "white", "gold1", "white", "gold1", "white", "gold1", "black", "black" ]
+color_sequence = [
+    "tomato"
+ "gold1"
+ "darkolivegreen1"
+ "gold1"
+ "white"
+ "tomato"
+ "gold1"
+ "darkolivegreen1"
+ "gold1"
+ "white"
+ "tomato"
+ "white"
+ "darkolivegreen1"
+ "tomato"
+ "darkolivegreen1" ]
 
-radius = 25
-Object(
+radius = 15
+total_frames = 10
+
+for num in 1:10
+Object( num:num, 
         (args...) ->
-            electrode.(
+            electrode(
                 Point(0,0),
-                sequence,
+                color_sequence[num],
                 "black",
                 :fill,
                 radius,
             ),
     )
+end
 
 function info_box(video, object, frame)
     fontsize(12)

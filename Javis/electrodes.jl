@@ -29,6 +29,7 @@ function electrode(
     radius = 25,
     circ_text = "",
 )
+    println("$fill_color")
     sethue(fill_color)
     circle(p, radius, :fill)
     sethue(outline_color)
@@ -78,26 +79,36 @@ electrodes_list = [
 
 indicators = ["white", "gold1", "darkolivegreen1", "tomato"]
 
-indicators2 = ["white", "gold1", "darkolivegreen1", "tomato", "white", "gold1", "darkolivegreen1"
-    , "white", "gold1", "darkolivegreen1", "tomato", "white", "gold1", "darkolivegreen1"
-    , "white", "gold1", "darkolivegreen1", "tomato", "white", "gold1", "darkolivegreen1"
-  ]
+  sequence = [
+    "gold1"
+ "gold1"
+ "gold1"
+ "gold1"
+ "darkolivegreen1"
+ "darkolivegreen1"
+ "gold1"
+ "white"
+ "white"
+ "tomato"
+ ]
+
+
 
 radius = 15 # Radius of the electrodes
 num=1
 for num in 1:length(electrodes_list)
     Object(
         (args...) ->
-            electrode.(
+            electrode( #I removed code broadcasing, evrything still works great!
                 electrodes_list[num].position,
-                rand(indicators, length(electrodes_list)),
+                rand(indicators),
                 "black",
                 :fill,
                 radius,
                 electrodes_list[num].name,
             ),
     )
-end
+end 
 
 function info_box(video, object, frame)
     fontsize(12)
