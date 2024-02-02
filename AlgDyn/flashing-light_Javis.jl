@@ -106,4 +106,4 @@ Object( num:num,
     )
 end
     
-render(video, pathname = "AlgDyn/flashing-light.gif", framerate = 1)
+render(video, pathname = "AlgDyn/Javis-gifs/flashing-light.gif", framerate = 1)

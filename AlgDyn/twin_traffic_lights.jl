@@ -303,4 +303,4 @@ Object(
 )
 end
     
-render(video, pathname = "AlgDyn/twin-traffic-light.gif", framerate = 1)
+render(video, pathname = "AlgDyn/Javis-gifs/twin-traffic-light.gif", framerate = 1)
