@@ -58,7 +58,8 @@ tspan = (1, 10)
 prob = DiscreteProblem(Looped_bulbs, initial_state, tspan, nothing) #p=nothing (no parameters)
 sol = solve(prob, FunctionMap();)
 
+getState(state) = if(state) "ON" else "--" end
 
 map(sol) do u
-    return (Bulb_1=u[1], Bulb_2=u[2], Bulb_3=u[3])
+    return (Bulb_1= getState(u[1]), Bulb_2=getState(u[2]), Bulb_3=getState(u[3]))
 end |> pretty_table

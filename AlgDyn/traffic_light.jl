@@ -79,3 +79,7 @@ sol = solve(prob, FunctionMap();)
 map(sol) do u
     return (Red=u[4], Green=u[5], Yellow=u[6])
 end |> pretty_table
+
+map(sol) do u
+    return  (Red=if(u[4]) "ON" else "--" end, Green=if(u[5]) "ON" else "--" end, Yellow=if(u[6]) "ON" else "--" end )
+end |> pretty_table
