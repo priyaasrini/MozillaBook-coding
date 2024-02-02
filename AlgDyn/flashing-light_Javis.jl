@@ -57,11 +57,11 @@ map(sol) do u
     return (BulbState = if (u[1]) "ON" else "OFF" end)
 end |> pretty_table
 
+#------ Javis code ----------#
+
 result = map(sol) do u
     return if(u[1]) "gold" else "gray" end
 end
-
-#------ Javis code ----------#
 
 using Javis
 
@@ -96,7 +96,7 @@ end
 for num in 1:total_span
 Object( num:num,
         (args...) ->
-            electrode.(
+            electrode(
                 Point(0,0),
                 state_seq[num],
                 "black",

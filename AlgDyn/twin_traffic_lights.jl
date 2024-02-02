@@ -207,6 +207,9 @@ end |> pretty_table
 
 # preparing color sequences to print
 getStateColor1(state) = if(state) "red" else "white" end
+getStateColor2(state) = if(state) "green" else "white" end
+getStateColor3(state) = if(state) "yellow" else "white" end
+
 left_light_seq =  map(sol) do u
     return ((getStateColor1(u[1]),getStateColor2(u[2]),getStateColor3(u[3])))
 end

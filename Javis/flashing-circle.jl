@@ -59,7 +59,7 @@ end
 
 function info_box(video, object, frame)
     fontsize(12)
-    box(140, -210, 170, 40, :stroke)
+    Javis.box(140, -210, 170, 40, :stroke)
     text("10-20 EEG Array Readings", 140, -220, valign = :middle, halign = :center)
     text("t = $(frame)s", 140, -200, valign = :middle, halign = :center)
 end
