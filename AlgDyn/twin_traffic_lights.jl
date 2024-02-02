@@ -171,7 +171,9 @@ LMemory_IS = [true, false, false] # previously red
 initial_states = append!(LLights_IS,LController_IS, RLights_IS, RController_IS, LMemory_IS, RMemory_IS)
 # All the inputs have red light on
 inputs = [] 
-tspan = (1, 25)
+
+total_span=25
+tspan = (1, total_span)
 
 
 prob = DiscreteProblem(TwinTrafficLight_m, initial_states, inputs, tspan, nothing) #p=nothing (no parameters)
@@ -200,3 +202,105 @@ map(sol) do u
     Prev_Light2 = (u[13], u[14], u[15]),
     Prev_Light1 = (u[16], u[17], u[18]))
 end |> pretty_table
+
+#------ Javis code ----------#
+
+# preparing color sequences to print
+getStateColor1(state) = if(state) "red" else "white" end
+left_light_seq =  map(sol) do u
+    return ((getStateColor1(u[1]),getStateColor2(u[2]),getStateColor3(u[3])))
+end
+right_light_seq =  map(sol) do u
+    return ((getStateColor1(u[7]),getStateColor2(u[8]),getStateColor3(u[9])))
+end
+
+using Javis
+
+video = Video(500, 500)
+
+function ground(args...)
+    background("white")
+    sethue("black")
+end
+
+anim_background = Background(1:total_span, ground) # same as tspan
+
+function electrode(
+    p = O,
+    fill_color = "white",
+    outline_color = "black",
+    action = :fill,
+    radius = 25,
+)
+    sethue(fill_color)
+    circle(p, radius, :fill)
+    sethue(outline_color)
+    circle(p, radius, :stroke)
+end
+
+radius = 15
+
+for num in 1:total_span
+Object( num:num,
+        (args...) ->
+            electrode(
+                Point(-50,-150),
+                left_light_seq[num][1],
+                "black",
+                :fill,
+                radius,
+            ),
+    )
+Object( 
+        (args...) ->
+            electrode(
+                Point(0,-150),
+                left_light_seq[num][2],
+                "black",
+                :fill,
+                radius,
+            ),
+    )
+Object( 
+        (args...) ->
+            electrode(
+                Point(50,-150),
+                left_light_seq[num][3],
+                "black",
+                :fill,
+                radius,
+            ),
+    )
+Object( 
+    (args...) ->
+        electrode(
+            Point(-150,50),
+            right_light_seq[num][1],
+            "black",
+            :fill,
+            radius,
+        ),
+)
+Object( 
+    (args...) ->
+        electrode(
+            Point(-150,0),
+            right_light_seq[num][2],
+            "black",
+            :fill,
+            radius,
+        ),
+)
+Object( 
+    (args...) ->
+        electrode(
+            Point(-150,-50),
+            right_light_seq[num][3],
+            "black",
+            :fill,
+            radius,
+        ),
+)
+end
+    
+render(video, pathname = "AlgDyn/twin-traffic-light.gif", framerate = 1)

@@ -45,7 +45,8 @@ off = Bool(BULB_OFF)
 
 
 initial_state = [on] # needs to be an array
-tspan = (1, 10)
+total_span = 10
+tspan = (1, total_span)
 
 
 prob = DiscreteProblem(Bulb, initial_state, tspan, nothing) #p=nothing (no parameters)
@@ -86,29 +87,23 @@ function electrode(
     circle(p, radius, :stroke)
 end
 
-radius = 25
-Object(
+radius = 50
+
+state_seq = map(sol) do u
+    return if(u[1]) "gold" else "white" end
+end
+
+for num in 1:total_span
+Object( num:num,
         (args...) ->
             electrode.(
                 Point(0,0),
-                map(sol) do u
-                    return if(u[1]) "gold" else "lightgray" end
-                end,
+                state_seq[num],
                 "black",
                 :fill,
                 radius,
             ),
     )
-
-function info_box(video, object, frame)
-    fontsize(12)
-    box(140, -210, 170, 40, :stroke)
-    text("10-20 EEG Array Readings", 140, -220, valign = :middle, halign = :center)
-    text("t = $(frame)s", 140, -200, valign = :middle, halign = :center)
 end
     
-info = Object(info_box)
-    
-
-
-render(video, pathname = "flashing-light.gif", framerate = 1)
+render(video, pathname = "AlgDyn/flashing-light.gif", framerate = 1)
