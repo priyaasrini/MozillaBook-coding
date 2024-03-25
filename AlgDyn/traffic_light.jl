@@ -125,13 +125,22 @@ function electrode(
     circle(p, radius, :stroke)
 end
 
-radius = 15
+function info_box(video, object, frame)
+    fill_color = "black"
+    sethue(fill_color)
+    setopacity(0.8)
+    Javis.box(0, 0, 100, 220, :fillpreserve)
+end
+
+radius = 25
+
+Object(info_box)
 
 for num in 1:total_span
 Object( num:num,
         (args...) ->
             electrode(
-                Point(-50,50),
+                Point(0,-65),
                 red_seq[num],
                 "black",
                 :fill,
@@ -141,8 +150,8 @@ Object( num:num,
 Object( 
         (args...) ->
             electrode(
-                Point(0,50),
-                green_seq[num],
+                Point(0,0),
+                yellow_seq[num],
                 "black",
                 :fill,
                 radius,
@@ -151,13 +160,14 @@ Object(
 Object( 
         (args...) ->
             electrode(
-                Point(50,50),
-                yellow_seq[num],
+                Point(0,65),
+                green_seq[num],
                 "black",
                 :fill,
                 radius,
             ),
     )
+
 end
     
 render(video, pathname = "AlgDyn/Javis-gifs/traffic-light.gif", framerate = 1)

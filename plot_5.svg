@@ -1,0 +1,217 @@
+<svg width="540pt" height="287pt" viewBox="0.00 0.00 540.47 286.98" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 282.98)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-282.98 536.47,-282.98 536.47,4 -4,4"></polygon>
+<!-- n0out1 -->
+<!-- n0out2 -->
+<!-- n0out1&#45;&gt;n0out2 -->
+<!-- n0out3 -->
+<!-- n0out2&#45;&gt;n0out3 -->
+<!-- n0out4 -->
+<!-- n0out3&#45;&gt;n0out4 -->
+<!-- n0out5 -->
+<!-- n0out4&#45;&gt;n0out5 -->
+<!-- n0out6 -->
+<!-- n0out5&#45;&gt;n0out6 -->
+<!-- n1 -->
+<!-- RedBulb -->
+<g id="n1" class="node">
+<title>n1</title>
+<polygon fill="none" stroke="black" points="3.81,-187.86 3.81,-212.11 61.81,-212.11 61.81,-187.86 3.81,-187.86"></polygon>
+<text text-anchor="start" x="8.81" y="-193.81" font-family="Serif" font-size="14.00">RedBulb</text>
+</g>
+<!-- n1&#45;&gt;n0out1 -->
+<!-- State -->
+<g id="e13" class="edge">
+<title>n1:e-&gt;n0out1:w</title>
+<path fill="none" stroke="black" d="M61.81,-199.99C83.81,-199.99 78.81,-222.88 97.81,-233.99 153.3,-266.45 171.64,-276.99 235.93,-276.99 235.93,-276.99 235.93,-276.99 344.31,-276.99 421.81,-276.99 442.51,-267.53 516.9,-267.01"></path>
+<polygon fill="black" stroke="black" points="516.8,-268.76 521.79,-266.99 516.79,-265.26 516.8,-268.76"></polygon>
+<text text-anchor="middle" x="330.81" y="-263.69" font-family="Serif" font-size="14.00">State</text>
+</g>
+<!-- n8 -->
+<!-- Controller -->
+<g id="n8" class="node">
+<title>n8</title>
+<polygon fill="none" stroke="black" points="97.81,-90.99 97.81,-162.99 163.31,-162.99 163.31,-90.99 97.81,-90.99"></polygon>
+<text text-anchor="start" x="102.81" y="-120.81" font-family="Serif" font-size="14.00">Controller</text>
+</g>
+<!-- n1&#45;&gt;n8 -->
+<!-- State -->
+<g id="e10" class="edge">
+<title>n1:e-&gt;n8:w</title>
+<path fill="none" stroke="black" d="M61.81,-199.99C86.51,-199.99 73.55,-159.05 91.78,-152.01"></path>
+<polygon fill="black" stroke="black" points="91.68,-153.8 96.31,-151.24 91.09,-150.35 91.68,-153.8"></polygon>
+<text text-anchor="middle" x="66.3" y="-162.2" font-family="Serif" font-size="14.00">State</text>
+</g>
+<!-- n2 -->
+<!-- GreenBulb -->
+<g id="n2" class="node">
+<title>n2</title>
+<polygon fill="none" stroke="black" points="415.06,-192.86 415.06,-217.11 484.31,-217.11 484.31,-192.86 415.06,-192.86"></polygon>
+<text text-anchor="start" x="420.06" y="-198.81" font-family="Serif" font-size="14.00">GreenBulb</text>
+</g>
+<!-- n2&#45;&gt;n0out2 -->
+<!-- State -->
+<g id="e14" class="edge">
+<title>n2:e-&gt;n0out2:w</title>
+<path fill="none" stroke="black" d="M485.68,-204.99C500.05,-204.99 505.16,-204.99 516.92,-204.99"></path>
+<polygon fill="black" stroke="black" points="516.79,-206.74 521.79,-204.99 516.79,-203.24 516.79,-206.74"></polygon>
+<text text-anchor="middle" x="517.89" y="-191.69" font-family="Serif" font-size="14.00">State</text>
+</g>
+<!-- n2&#45;&gt;n8 -->
+<!-- State -->
+<g id="e11" class="edge">
+<title>n2:e-&gt;n8:w</title>
+<path fill="none" stroke="black" d="M485.68,-204.99C491.09,-204.99 488.61,-213.4 484.68,-217.11 482.72,-218.97 340.16,-223.88 310.56,-219.99 213.39,-207.21 158.3,-239.89 97.56,-162.99 89.18,-152.39 82.83,-134.05 90.67,-128.57"></path>
+<polygon fill="black" stroke="black" points="90.72,-130.37 95.09,-127.38 89.81,-126.99 90.72,-130.37"></polygon>
+<text text-anchor="middle" x="273.97" y="-204.38" font-family="Serif" font-size="14.00">State</text>
+</g>
+<!-- n3 -->
+<!-- YellowBulb -->
+<g id="n3" class="node">
+<title>n3</title>
+<polygon fill="none" stroke="black" points="412.06,-138.86 412.06,-163.11 487.31,-163.11 487.31,-138.86 412.06,-138.86"></polygon>
+<text text-anchor="start" x="417.06" y="-144.81" font-family="Serif" font-size="14.00">YellowBulb</text>
+</g>
+<!-- n3&#45;&gt;n0out3 -->
+<!-- State -->
+<g id="e15" class="edge">
+<title>n3:e-&gt;n0out3:w</title>
+<path fill="none" stroke="black" d="M487.31,-150.99C500.95,-150.99 505.84,-152.44 516.89,-152.87"></path>
+<polygon fill="black" stroke="black" points="516.76,-154.62 521.79,-152.96 516.83,-151.12 516.76,-154.62"></polygon>
+<text text-anchor="middle" x="518.97" y="-138.7" font-family="Serif" font-size="14.00">State</text>
+</g>
+<!-- n3&#45;&gt;n8 -->
+<!-- State -->
+<g id="e12" class="edge">
+<title>n3:e-&gt;n8:w</title>
+<path fill="none" stroke="black" d="M488.68,-150.99C502.97,-150.99 510.98,-201.7 412.06,-163.11 391.8,-155.21 392.82,-143.83 376.06,-129.99 332.8,-94.28 327.83,-72.54 274.56,-54.99 242.79,-44.53 232.27,-49.33 199.31,-54.99 152.03,-63.11 126.85,-53 97.56,-90.99 96.23,-92.71 94.93,-95.01 94.22,-97.14"></path>
+<polygon fill="black" stroke="black" points="92.51,-97.59 95.99,-101.58 95.76,-96.29 92.51,-97.59"></polygon>
+<text text-anchor="middle" x="315.41" y="-72.24" font-family="Serif" font-size="14.00">State</text>
+</g>
+<!-- n4 -->
+<!-- Controller -->
+<g id="n4" class="node">
+<title>n4</title>
+<polygon fill="none" stroke="black" points="310.56,-138.99 310.56,-210.99 376.06,-210.99 376.06,-138.99 310.56,-138.99"></polygon>
+<text text-anchor="start" x="315.56" y="-168.81" font-family="Serif" font-size="14.00">Controller</text>
+</g>
+<!-- n4&#45;&gt;n1 -->
+<!-- Red -->
+<g id="e1" class="edge">
+<title>n4:e-&gt;n1:w</title>
+<path fill="none" stroke="black" d="M377.31,-198.99C382.66,-198.99 380.24,-207.36 376.31,-210.99 273.61,-305.82 201.58,-211.86 61.81,-212.11 36.03,-212.16 22.77,-229.58 3.81,-212.11 2.06,-210.51 0.62,-207.99 0,-205.66"></path>
+<polygon fill="black" stroke="black" points="1.49,-206.6 2.13,-201.34 -1.65,-205.05 1.49,-206.6"></polygon>
+<text text-anchor="middle" x="169.5" y="-218.82" font-family="Serif" font-size="14.00">Red</text>
+</g>
+<!-- n4&#45;&gt;n2 -->
+<!-- Green -->
+<g id="e2" class="edge">
+<title>n4:e-&gt;n2:w</title>
+<path fill="none" stroke="black" d="M376.06,-174.99C395.1,-174.99 393.1,-198.78 407.55,-203.99"></path>
+<polygon fill="black" stroke="black" points="406.97,-205.67 412.19,-204.74 407.53,-202.21 406.97,-205.67"></polygon>
+<text text-anchor="middle" x="411.39" y="-176.73" font-family="Serif" font-size="14.00">Green</text>
+</g>
+<!-- n4&#45;&gt;n3 -->
+<!-- Yellow -->
+<g id="e3" class="edge">
+<title>n4:e-&gt;n3:w</title>
+<path fill="none" stroke="black" d="M376.06,-150.99C389.68,-150.99 394.6,-150.99 405.64,-150.99"></path>
+<polygon fill="black" stroke="black" points="405.54,-152.74 410.54,-150.99 405.54,-149.24 405.54,-152.74"></polygon>
+<text text-anchor="middle" x="374.72" y="-137.69" font-family="Serif" font-size="14.00">Yellow</text>
+</g>
+<!-- n5 -->
+<!-- RedBulb -->
+<g id="n5" class="node">
+<title>n5</title>
+<polygon fill="none" stroke="black" points="207.93,-147.86 207.93,-172.11 265.93,-172.11 265.93,-147.86 207.93,-147.86"></polygon>
+<text text-anchor="start" x="212.93" y="-153.81" font-family="Serif" font-size="14.00">RedBulb</text>
+</g>
+<!-- n5&#45;&gt;n0out4 -->
+<!-- State -->
+<g id="e16" class="edge">
+<title>n5:e-&gt;n0out4:w</title>
+<path fill="none" stroke="black" d="M266.93,-159.99C290.46,-159.99 288.42,-137.96 310.56,-129.99 397.86,-98.54 427.06,-110.42 517.01,-110.97"></path>
+<polygon fill="black" stroke="black" points="516.79,-112.72 521.79,-110.98 516.8,-109.22 516.79,-112.72"></polygon>
+<text text-anchor="middle" x="379.15" y="-96.48" font-family="Serif" font-size="14.00">State</text>
+</g>
+<!-- n5&#45;&gt;n4 -->
+<!-- State -->
+<g id="e7" class="edge">
+<title>n5:e-&gt;n4:w</title>
+<path fill="none" stroke="black" d="M266.93,-159.99C290.7,-159.99 285.74,-192.57 304.57,-198.17"></path>
+<polygon fill="black" stroke="black" points="303.86,-199.84 309.06,-198.78 304.34,-196.38 303.86,-199.84"></polygon>
+<text text-anchor="middle" x="275.24" y="-180.43" font-family="Serif" font-size="14.00">State</text>
+</g>
+<!-- n6 -->
+<!-- GreenBulb -->
+<g id="n6" class="node">
+<title>n6</title>
+<polygon fill="none" stroke="black" points="202.31,-105.86 202.31,-130.11 271.56,-130.11 271.56,-105.86 202.31,-105.86"></polygon>
+<text text-anchor="start" x="207.31" y="-111.81" font-family="Serif" font-size="14.00">GreenBulb</text>
+</g>
+<!-- n6&#45;&gt;n0out5 -->
+<!-- State -->
+<g id="e17" class="edge">
+<title>n6:e-&gt;n0out5:w</title>
+<path fill="none" stroke="black" d="M272.93,-117.99C290.23,-117.99 293.67,-111.77 310.56,-107.99 402.25,-87.43 426.11,-69.8 516.94,-69.02"></path>
+<polygon fill="black" stroke="black" points="516.8,-70.77 521.79,-68.99 516.78,-67.27 516.8,-70.77"></polygon>
+<text text-anchor="middle" x="382.53" y="-72.48" font-family="Serif" font-size="14.00">State</text>
+</g>
+<!-- n6&#45;&gt;n4 -->
+<!-- State -->
+<g id="e8" class="edge">
+<title>n6:e-&gt;n4:w</title>
+<path fill="none" stroke="black" d="M272.93,-117.99C300.91,-117.99 283.48,-166.43 304.37,-174"></path>
+<polygon fill="black" stroke="black" points="303.85,-175.69 309.06,-174.75 304.4,-172.23 303.85,-175.69"></polygon>
+<text text-anchor="middle" x="278.21" y="-132.93" font-family="Serif" font-size="14.00">State</text>
+</g>
+<!-- n7 -->
+<!-- YellowBulb -->
+<g id="n7" class="node">
+<title>n7</title>
+<polygon fill="none" stroke="black" points="199.31,-63.86 199.31,-88.11 274.56,-88.11 274.56,-63.86 199.31,-63.86"></polygon>
+<text text-anchor="start" x="204.31" y="-69.81" font-family="Serif" font-size="14.00">YellowBulb</text>
+</g>
+<!-- n7&#45;&gt;n0out6 -->
+<!-- State -->
+<g id="e18" class="edge">
+<title>n7:e-&gt;n0out6:w</title>
+<path fill="none" stroke="black" d="M274.56,-75.99C386.59,-75.99 408.36,-14.34 517.05,-12.05"></path>
+<polygon fill="black" stroke="black" points="516.81,-13.81 521.79,-12 516.77,-10.31 516.81,-13.81"></polygon>
+<text text-anchor="middle" x="385.49" y="-30.66" font-family="Serif" font-size="14.00">State</text>
+</g>
+<!-- n7&#45;&gt;n4 -->
+<!-- State -->
+<g id="e9" class="edge">
+<title>n7:e-&gt;n4:w</title>
+<path fill="none" stroke="black" d="M274.56,-75.99C309.07,-75.99 278.29,-141.36 304.14,-150.04"></path>
+<polygon fill="black" stroke="black" points="303.86,-151.77 309.06,-150.77 304.37,-148.3 303.86,-151.77"></polygon>
+<text text-anchor="middle" x="306.06" y="-100.15" font-family="Serif" font-size="14.00">State</text>
+</g>
+<!-- n8&#45;&gt;n5 -->
+<!-- Red -->
+<g id="e4" class="edge">
+<title>n8:e-&gt;n5:w</title>
+<path fill="none" stroke="black" d="M163.31,-150.99C180.78,-150.99 185.97,-158 200.57,-159.65"></path>
+<polygon fill="black" stroke="black" points="200.33,-161.39 205.42,-159.91 200.52,-157.89 200.33,-161.39"></polygon>
+<text text-anchor="middle" x="174.61" y="-142.33" font-family="Serif" font-size="14.00">Red</text>
+</g>
+<!-- n8&#45;&gt;n6 -->
+<!-- Green -->
+<g id="e5" class="edge">
+<title>n8:e-&gt;n6:w</title>
+<path fill="none" stroke="black" d="M163.31,-126.99C178.22,-126.99 182.63,-120.22 194.75,-118.42"></path>
+<polygon fill="black" stroke="black" points="194.56,-120.19 199.42,-118.09 194.31,-116.7 194.56,-120.19"></polygon>
+<text text-anchor="middle" x="198.66" y="-123.42" font-family="Serif" font-size="14.00">Green</text>
+</g>
+<!-- n8&#45;&gt;n7 -->
+<!-- Yellow -->
+<g id="e6" class="edge">
+<title>n8:e-&gt;n7:w</title>
+<path fill="none" stroke="black" d="M163.31,-102.99C180.96,-102.99 179.91,-81.95 193.19,-77.01"></path>
+<polygon fill="black" stroke="black" points="193.17,-78.79 197.81,-76.24 192.59,-75.34 193.17,-78.79"></polygon>
+<text text-anchor="middle" x="161.89" y="-76.05" font-family="Serif" font-size="14.00">Yellow</text>
+</g>
+</g>
+</svg>
